@@ -1,0 +1,30 @@
+/* Lokale Work Sans-fonter fra assets/fonts/static/ */
+@font-face {
+    font-family: "Work Sans";
+    src: url("./assets/fonts/static/WorkSans-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Work Sans";
+    src: url("./assets/fonts/static/WorkSans-Medium.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Work Sans";
+    src: url("./assets/fonts/static/WorkSans-SemiBold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Bruk fonten som standard */
+body {
+    font-family: "Work Sans";
+    font-weight: 400;
+}
