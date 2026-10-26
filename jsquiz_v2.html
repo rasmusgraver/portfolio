@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Quiz</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: pink;
+        padding: 20px 50px;
+      }
+      .grid {
+        display: grid;
+        gap: 50px;
+        grid-template-columns: 1fr 1fr;
+      }
+      @media (width < 1000px) {
+        header,
+        .grid {
+          max-width: 540px;
+          margin: auto;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (width > 1500px) {
+        .grid {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+      }
+      article {
+        padding: 20px;
+        border-radius: 20px;
+        background-color: antiquewhite;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        h1 {
+          padding: 20px;
+          background-color: rgb(244, 218, 184);
+          border-radius: 50px;
+          width: fit-content;
+        }
+      }
+      .boxes {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: 50px;
+        border-top: 3px solid black;
+        padding-top: 10px;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        border: 2px solid black;
+        border-radius: 10px;
+        background-color: aqua;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>JS Quiz!</h1>
+      <h1>Poeng: <span id="poeng">0</span></h1>
+    </header>
+
+    <div class="grid">
+      <article>
+        <h2>1. Hva er hovedstaden i Australia?</h2>
+        <div class="boxes">
+          <div class="box" onclick="sjekkSvar(false, this)">Sydney</div>
+          <div class="box" onclick="sjekkSvar(true, this)">Canberra</div>
+          <div class="box" onclick="sjekkSvar(false, this)">Melbourne</div>
+        </div>
+      </article>
+
+      <article>
+        <h2>2. Hvilken planet er nærmest solen?</h2>
+        <div class="boxes">
+          <div class="box" onclick="sjekkSvar(false, this)">Venus</div>
+          <div class="box" onclick="sjekkSvar(false, this)">Mars</div>
+          <div class="box" onclick="sjekkSvar(true, this)">Merkur</div>
+        </div>
+      </article>
+      <article>
+        <h2>3. Hva er kvadratroten av 144?</h2>
+        <div class="boxes">
+          <div class="box">12</div>
+          <div class="box">14</div>
+          <div class="box">72</div>
+        </div>
+      </article>
+
+      <article>
+        <h2>4. Hvilket år ble Norge selvstendig fra Sverige?</h2>
+        <div class="boxes">
+          <div class="box">1814</div>
+          <div class="box">1905</div>
+          <div class="box">1945</div>
+        </div>
+      </article>
+    </div>
+    <script>
+      poeng = 0
+      poengElement = document.getElementById("poeng")
+      console.log(poengElement)
+
+      function disableKnapper(svar) {
+        // Fjern onclick fra alle boksene i dette spørsmålet:
+        alleSvar = svar.parentElement.children
+        for (const boks of alleSvar) {
+          boks.onclick = ""
+        }
+      }
+
+      function sjekkSvar(erSvarKorrekt, boks) {
+        console.log("Sjekker svar....")
+        console.log(boks)
+        disableKnapper(boks)
+        if (erSvarKorrekt) {
+          boks.style.backgroundColor = "green"
+          poeng += 10
+          poengElement.textContent = poeng
+        } else {
+          boks.style.backgroundColor = "red"
+        }
+
+        /*
+        setTimeout(() => {
+          boks.style.backgroundColor = "aqua"
+        }, 1000) */
+      }
+    </script>
+  </body>
+</html>
